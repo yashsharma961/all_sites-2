@@ -1,0 +1,189 @@
+let config_f = {
+    "prod": [
+        {       // main product
+            "classSelector": "._2c7YLP.UtUXW0._6t1WkM._3HqJxg",
+            "nameSelector":[
+                {"selector": [".B_NuCI"], "attribute": "innerText", "brandselector": [".G6XhRU"], "brandattribute": "innerText"},
+                {"selector": ["._396cs4"], "attribute": "alt"},
+                {"selector": ["._2r_T1I"], "attribute": "alt"}
+            ],
+            "imgSelector":[
+                {"selector" : ["._396cs4"], "attribute": "src"},
+                {"selector" : ["._2r_T1I"], "attribute": "src"},
+                {"selector" : ["meta[name='og_image']"], "attribute": "content"}
+              ],
+              "priceSelector":[
+                {"selector": ["._30jeq3"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+              ],
+              "mrpSelector":[
+            {"selector": ["._3I9_wc"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+                ],
+        
+            "pidSelector":[
+                { "selector" : ["li._38I6QT","a"], "attribute" : "href", "regex": [/pid=([A-Za-z0-9]*)/]} 
+               ],
+            "availSelector":
+                  {"avail":["._16FRp0"]},
+             "breadSelector":[
+              {"selector":[] , "bread": "._3GIHBu", "selectingbread":[], "trim" : 1}
+             ]
+        },
+        {       // reviews
+            "classSelector": "._1Ni40J",
+            "nameSelector":[
+                {"selector": ["._396cs4"], "attribute": "alt"},
+                {"selector": ["._2r_T1I"], "attribute": "alt"},
+                {"selector": ["._1W9f5C", "div"], "attribute": "innerText", "slice": [4]}
+            ],
+            "imgSelector":[
+                {"selector" : ["._396cs4"], "attribute": "src"},
+                {"selector" : ["._2r_T1I"], "attribute": "src"}
+              ],
+              "priceSelector":[
+                {"selector": ["._30jeq3"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+              ],
+    
+              "mrpSelector": ["no mrp"],
+        
+            "pidSelector":[
+                { "selector" : ["div._1kLt05","a"], "attribute" : "href", "regex": [/pid=([A-Za-z0-9]*)/]} 
+               ]
+        },
+        {       // wishlist
+            "classSelector": "div._1M-Ete",
+            "nameSelector":[
+              {"selector": ["._3hscEA"], "attribute": "innerText"},
+                {"selector": ["._396cs4"], "attribute": "alt"},
+                {"selector": ["._2r_T1I"], "attribute": "alt"}
+            ],
+            "imgSelector":[
+                {"selector" : ["._396cs4"], "attribute": "src"},
+                {"selector" : ["._2r_T1I"], "attribute": "src"}
+              ],
+              "priceSelector":[
+                {"selector": ["._30jeq3"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+              ],
+              "mrpSelector":[
+            {"selector": ["._3I9_wc"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+                ],
+        
+            "pidSelector":[
+                { "selector" : ["a"], "attribute" : "href", "regex": [/pid=([A-Za-z0-9]*)/]} 
+               ],
+            "availSelector":
+                  {"avail":["span._192laR","._3G6awp"]} 
+        },
+        {       // cart
+            "classSelector": "div._2nQDXZ",
+            "nameSelector":[
+                {"selector": ["._2Kn22P.gBNbID"], "attribute": "innerText"},
+                {"selector": ["._396cs4"], "attribute": "alt"},
+                {"selector": ["._2r_T1I"], "attribute": "alt"},
+            ],
+            "imgSelector":[
+                {"selector" : ["._396cs4"], "attribute": "src"},
+                {"selector" : ["._2r_T1I"], "attribute": "src"}
+              ],
+              "priceSelector":[
+                {"selector": ["span._2-ut7f._1WpvJ7"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+              ],
+              "mrpSelector":[
+            {"selector": ["span._2-ut7f._2xc6hH"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+                ],
+        
+            "pidSelector":[
+                { "selector" : ["a"], "attribute" : "href", "regex": [/pid=([A-Za-z0-9]*)/]} 
+               ],
+            "availSelector":
+                  {"avail":["._1tBBEs","._3G6awp"]} 
+        },
+        {       // search
+            "classSelector": "._2kHMtA",
+            "nameSelector":[
+                {"selector": ["._4rR01T"], "attribute": "innerText"},
+                {"selector": ["._396cs4"], "attribute": "alt"},
+                {"selector": ["._2r_T1I"], "attribute": "alt"}
+            ],
+            "imgSelector":[
+                {"selector" : ["._396cs4"], "attribute": "src"},
+                {"selector" : ["._2r_T1I"], "attribute": "src"}
+              ],
+              "priceSelector":[
+                {"selector": ["._30jeq3"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+              ],
+              "mrpSelector":[
+            {"selector": ["._3I9_wc"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+                ],
+        
+            "pidSelector":[
+                { "selector" : ["a"], "attribute" : "href", "regex": [/pid=([A-Za-z0-9]*)/]} 
+               ],
+            "availSelector":
+                {"avail":["span._192laR","._3G6awp"]} 
+        },
+        {       // search 2
+            "classSelector": "._1xHGtK._373qXS",
+            "nameSelector":[
+              {"selector": [".IRpwTa"], "attribute": "title", "brandselector": ["._2WkVRV"], "brandattribute": "innerText"},
+              {"selector": [".IRpwTa"], "attribute": "innerText", "brandselector": ["._2WkVRV"], "brandattribute": "innerText"},
+              {"selector": ["._396cs4"], "attribute": "alt"},
+              {"selector": ["._2r_T1I"], "attribute": "alt"}
+            ],
+            "imgSelector":[
+                {"selector" : ["._396cs4"], "attribute": "src"},
+                {"selector" : ["._2r_T1I"], "attribute": "src"}
+              ],
+              "priceSelector":[
+                {"selector": ["._30jeq3"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+              ],
+              "mrpSelector":[
+            {"selector": ["._3I9_wc"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+                ],
+        
+            "pidSelector":[
+                { "selector" : ["a"], "attribute" : "href", "regex": [/pid=([A-Za-z0-9]*)/]} 
+               ],
+            "availSelector":
+                     {"avail":["span._192laR","._3G6awp"]} 
+        },
+        {       // search 3
+            "classSelector": "._4ddWXP",
+            "nameSelector":[
+              {"selector": [".s1Q9rs"], "attribute": "title", "brandselector": ["._3w92jg"], "brandattribute": "innerText"},
+              {"selector": [".s1Q9rs"], "attribute": "innerText", "brandselector": ["._3w92jg"], "brandattribute": "innerText"},
+              {"selector": ["._396cs4"], "attribute": "alt"},
+              {"selector": ["._2r_T1I"], "attribute": "alt"}
+            ],
+            "imgSelector":[
+                {"selector" : ["._396cs4"], "attribute": "src"},
+                {"selector" : ["._2r_T1I"], "attribute": "src"}
+              ],
+              "priceSelector":[
+                {"selector": ["._30jeq3"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+              ],
+              "mrpSelector":[
+            {"selector": ["._3I9_wc"], "attribute": "innerHTML", "regex": [/\d+(\.\d+)?/g]}
+                ],
+        
+            "pidSelector":[
+                { "selector" : ["a"], "attribute" : "href", "regex": [/pid=([A-Za-z0-9]*)/]} 
+               ],
+            "availSelector":
+                     {"avail":["span._192laR","._3G6awp"]} 
+        },
+        {       // bottom of category list
+          "classSelector": "li._1pbqS9",
+          "nameSelector":[
+              {"selector": ["a"], "attribute": "innerText"}
+          ],
+            "priceSelector":[
+              {"selector": ["._1liiiu"], "attribute": "innerText", "regex": [/\d+(\.\d+)?/g]}
+            ],
+            "mrpSelector":["no mrp"],
+      
+          "pidSelector":[
+              { "selector" : ["a"], "attribute" : "href", "regex": [/pid=([A-Za-z0-9]*)/]} 
+             ]
+        }   
+    ]
+}

@@ -1,0 +1,106 @@
+let config_f = {
+    "prod":[
+        {    // brand page
+            "classSelector":".evejxsf1",       
+            "nameSelector":[
+            {"selector":[".css-1t10dtm"], attribute: "ariaLabel"}
+            ],
+            "priceSelector":[
+            {"selector":[".css-1ijk06y"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]},
+            ],
+            "mrpSelector":[
+            {"selector":[".css-1vhnk55"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+            ],
+            "pidSelector":[
+            {"selector":[".css-1t10dtm"], attribute: "href", regex:[/\/p\/([a-zA-Z0-9]+)/]}
+            ],
+            "imgSelector": [
+            {"selector" : [".css-1gz6n8k"], "attribute": "src"}
+            ],
+            "availSelector":
+            {"avail":["[data-at='product-soldout']"]} 
+        },
+        {   // product page
+            "classSelector":"html",       
+            "nameSelector":[
+            {"selector":[".css-cmh3n9"], attribute: "innerText", brandselector: [".css-6mpq2k"], brandattribute: "innerText"}
+            ],
+            "priceSelector":[
+            {"selector":[".css-1byl9fj"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]},
+            ],
+            "mrpSelector":[
+            {"selector":[".css-1wdqtmr"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+            ],
+            "pidSelector":[
+            {"selector":['meta[property="og:url"]'], attribute: "content", regex:[/\/p\/([a-zA-Z0-9]+)/]},
+            {"selector":['meta[property="al:ios:url"]'], attribute: "content", regex:[/\/p\/([a-zA-Z0-9]+)/]},
+            {"selector":['link[rel="canonical"]'], attribute: "href", regex:[/\/p\/([a-zA-Z0-9]+)/]}
+            ],
+            "imgSelector": [
+            {"selector" : [".css-13orjtl","img.pdp-selector-img"], "attribute": "src"}
+            ],
+            "availSelector":
+            {"avail":[".notify-btn"]},
+            skuSelector:[
+                { selector:[], url:true, "regex": [/skuId=([A-Za-z0-9]*)/]}
+              ],
+        },
+        {   // wishlist
+            "classSelector":".wishlist-prod",       
+            "nameSelector":[
+            {"selector":[".css-1f9lck7"], attribute: "innerText"}
+            ],
+            "priceSelector":[
+            {"selector":[".css-1gtmubr"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]},
+            ],
+            "mrpSelector":[
+            {"selector":[".css-z8ktdy"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+            ],
+            "pidSelector":[
+            {"selector":[".css-19nu305"], attribute: "href", regex:[/\/p\/([a-zA-Z0-9]+)/]}
+            ],
+            "imgSelector": [
+            {"selector" : [".css-p3bt1g"], "attribute": "src"}
+            ],
+            "availSelector":
+            {"avail":[".css-3xtubp"]} 
+        },
+        {   // cart
+            "iframeClass": ".css-1b84mvw",
+            "classSelector":".css-kx1h64",       
+            "nameSelector":[
+            {"selector":[".css-1fbnhc0"], attribute: "innerText"}
+            ],
+            "priceSelector":[
+            {"selector":[".css-knon4p"],attribute: "innerHTML", "regex": [/\d+(\.\d+)?/g], "sub_reg":/^[^<]*/}
+            ],
+            "mrpSelector":[
+            {"selector":[".css-18h9lb0"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+            ],
+            "pidSelector":[
+            {"selector":[".css-aqb1q9"], attribute: "href", regex:[/\/p\/([a-zA-Z0-9]+)/]}
+            ],
+            "imgSelector": [
+            {"selector" : [".css-1h1lw0e"], "attribute": "src"}
+            ]
+        },
+        {   // similar
+            "classSelector":".css-dcu72d",       
+            "nameSelector":[
+            {"selector":[".css-1f9lck7"], attribute: "innerText", brandselector: [".css-83i2bf"], brandattribute: "innerText"}
+            ],
+            "priceSelector":[
+            {"selector":[".css-1gtmubr"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]},
+            ],
+            "mrpSelector":[
+            {"selector":[".css-z8ktdy"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+            ],
+            "pidSelector":[
+            {"selector":[".css-19nu305"], attribute: "href", regex:[/\/p\/([a-zA-Z0-9]+)/]}
+            ],
+            "imgSelector": [
+            {"selector" : [".css-p3bt1g"], "attribute": "src"}
+            ]
+        }
+    ]
+}

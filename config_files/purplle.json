@@ -1,0 +1,155 @@
+let config_f = {
+    "prod": [
+  
+        {
+            "classSelector": ["html"],
+  
+            "nameSelector": [
+                { "selector": ["h1"] },
+                { "selector": ["#mainImage", ".img-fix-thumb"], " attribute": "alt", "slice": [4, -10] },
+                { "selector": [".breadcrumb", ".el1"] }
+            ],
+            "imgSelector": [
+                { "selector": ["#mainImage", ".img-fix-thumb"], "attribute": "src" }
+            ],
+  
+            "priceSelector": [
+                { "selector": [".f22"], "regex": [/\d+(\.\d+)?/g] }
+            ],
+  
+            "mrpSelector": [
+                { "selector": [".mrl8"], "regex": [/\d+(\.\d+)?/g] },
+                { "selector": [".mrr8"], "regex": [/\d+(\.\d+)?/g] }
+            ],
+  
+            "pidSelector": [
+                { "selector": ["link[rel='canonical']"], "attribute": "href", "regex": [/\/product\/(.*?)(?:\?|$)/] }
+            ],
+  
+            "availSelector": {
+                "avail": [".mrb20.fanB.f16.lh28.tx-red"]
+            },
+  
+            "breadSelector": [
+                { "selector": [".breadcrumb"], "bread": "li", "selectingbread": [], trim: 1}
+            ]
+        },
+          {
+            //QSA-list of elements or list of list of elements
+            "classSelector": "item-content",
+            //elements=document.querySelectorAll("item-content")
+  
+            "nameSelector":
+                [
+                    { "selector": [".pro-name"] }
+                    //element1.querySelector(".pro-name").textContent
+                ],
+  
+            "imgSelector":
+                [
+                    { "selector": [".img-fix-thumb"], "attribute": "src" }
+                    //element1.querySelector(".img-fix-thumb").src
+                ],
+  
+            "priceSelector":
+                [
+                    { "selector": [".f18"], "regex": [/\d+(\.\d+)?/g] }
+                ],
+  
+            "mrpSelector":
+                [
+                    { "selector": [".tx-std30"], "regex": [/\d+(\.\d+)?/g] }
+                ],
+  
+  
+            "pidSelector":
+                [
+                    { "selector": ["a"], "attribute": "href", "regex": [/\/product\/(.*?)(?:\?|$)/] }
+                    //str=data[2].querySelector("a").href
+                    //str.match(/\/product\/(.*?)(?:\?|$)/ )[1]
+                ],
+  
+            "availSelector": {
+                "avail": [".oos"]
+            }
+          },
+            {
+              //QSA-filter_elements-QSA-list of elements or list of list of elements
+              "classSelector": ".swiper-slide",
+  
+              "nameSelector":
+                  [
+                      { "selector": [".pro-name"] }
+                  ],
+  
+              "imgSelector":
+                  [
+                     // { "selector": [".img-fix-thumb.visible"], "attribute": "src" },
+                      { "selector": [".img-fixedimg-135.fullWidthImg","img"], "attribute": "src" }
+                      
+                  ],
+  
+              "priceSelector":
+                  [
+                      { "selector": [".f18.tx-b.fanB"], "regex": [/\d+(\.\d+)?/g] },
+                      { "selector": [".tx-0.fanB.f16.desk_f18"], "regex": [/\d+(\.\d+)?/g] }
+                  ],
+  
+              "mrpSelector":
+                  [
+                      { "selector": [".mrl5.tx-std30.f12"], "regex": [/\d+(\.\d+)?/g] },
+                      {"selector": [".tx-del.mrl3.fanR.ng-star-inserted"], "regex": [/\d+(\.\d+)?/g]}
+                  ],
+  
+  
+              "pidSelector":
+                  [
+                      {selector:['.db.gatrk'], attribute:'href', regex:[/https:\/\/www\.purplle\.com\/product\/(\w+-\w+-\w+-\w+-\w+)/]}
+                  ],
+  
+              "availSelector": {
+                  "avail": [".tx-red.f12.mrb0.mrt5.t-center"]
+              }
+          },
+          {
+            //QSA-filter_elements-QSA-list of elements or list of list of elements
+            "classSelector": ".mat-card.mat-focus-indicator.pd0i.recs-med",
+  
+            "nameSelector":
+                [
+                    { "selector": [".pro-name"] }
+                ],
+  
+            "imgSelector":
+                [ 
+                    { "selector": [".img-fixed.img-135.fullWidthImg","img"], "attribute": "src" },
+                    { "selector": [".img-fixedimg-135.fullWidthImg","img"], "attribute": "src" }
+                ],
+  
+            "priceSelector":
+                [
+                    { "selector": [".tx-0.fanB.f14.d_f20"], "regex": [/\d+(\.\d+)?/g] },
+                    { "selector": [".tx-0.fanB.f16.desk_f18"], "regex": [/\d+(\.\d+)?/g] }
+                ],
+  
+            "mrpSelector":
+                [
+                    { "selector": [".tx-del.mrl1"], "regex": [/\d+(\.\d+)?/g] },
+                    {"selector": [".tx-del.mrl3.fanR.ng-star-inserted"], "regex": [/\d+(\.\d+)?/g]}
+                ],
+  
+  
+            "pidSelector":
+                [
+                  { "selector": [".img-fixed.fullWidthImg.img-135.rImgBx","img"], "attribute": "src" , regex:[/\/([^/]+)\.\w+$/]}
+                ],
+  
+            "availSelector": {
+                "avail": [".tx-red.f12.mrb0.mrt5.t-center"]
+            }
+        }
+        
+    ]
+  
+  }
+  

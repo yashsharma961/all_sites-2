@@ -1,0 +1,142 @@
+let config_f = {
+    "prod": [
+        {
+            "classSelector": "html",
+  
+            "nameSelector": [
+                { "selector": [".prodName","h1"] },
+            ],
+            "imgSelector": [
+                { "selector": ["meta[property='og:image']"], "attribute": "content" }
+            ],
+  
+            "priceSelector": [
+                { "selector": [".final-price"], "regex": [/\d+(\.\d+)?/g] }
+            ],
+  
+            "mrpSelector": [
+                { "selector": [".price strike"], "regex": [/\d+(\.\d+)?/g]},
+            ],
+  
+            "pidSelector": [
+                { "selector": ["meta[property='og:url']"], "attribute": "content", "regex": [/(?:\.com\/)(.+)/] }
+            ],
+  
+            "availSelector": {
+                "avail":[".os-txt"]
+            },
+  
+            "breadSelector": [
+                { "selector": [".breadcrumbs"], "bread": "li", "selectingbread": [] , trim: 1}
+            ]
+        },
+  
+        {
+            "classSelector": ".pro_detail",
+  
+            "nameSelector": [
+                { "selector": [".cat_title"] },
+            ],
+            "imgSelector": [
+                { "selector": [".product-image-photo"], "attribute": "src" }
+            ],
+  
+            "priceSelector": [
+                { "selector": ["#final_price"], "regex": [/\d+(\.\d+)?/g] }
+            ],
+  
+            "mrpSelector": [
+                { "selector": [".price"], "regex": [/\d+(\.\d+)?/g] },
+            ],
+  
+            "pidSelector": [
+                { "selector": ["a"], "attribute": "href" ,"regex": [/(?:\.com\/)(.+)/]}
+            ],
+  
+            "availSelector": {
+                "avail":[".os-btn"]
+            }
+        },
+  
+        {
+            "classSelector": "[id^='itemid']",
+  
+            "nameSelector": [
+                { "selector": [".product-item-name a"] },
+            ],
+            "imgSelector": [
+                { "selector": [".pro-img"], "attribute": "src" }
+            ],
+  
+            "priceSelector": [
+                { "selector": ["[id^='row_itmdiscprice']"],"regex": [/\d+(\.\d+)?/g] }
+            ],
+  
+            "mrpSelector": [
+                { "selector": [".mrp-price"], "regex": [/\d+(\.\d+)?/g] },
+            ],
+  
+            "pidSelector": [
+                { "selector": [".product-item-name a"], "attribute": "href" ,"regex": [/(?:\.com\/)(.+)/]}
+            ]
+        },
+        {
+            "classSelector": ".list",
+  
+            "nameSelector": [
+                { "selector": [".productname"] },
+            ],
+            "imgSelector": [
+                { "selector": [".productimg img"], "attribute": "src" }
+            ],
+  
+            "priceSelector": [
+                { "selector": [".price"], "regex": [/\d+(\.\d+)?/g] }
+            ],
+  
+            "mrpSelector": [
+                { "selector": [".originalamt"], "regex": [/\d+(\.\d+)?/g] },
+            ],
+  
+            "pidSelector": [
+                { "selector": [".productname"], "attribute": "href" ,"regex": [/(?:\.com\/)(.+)/]}
+            ],
+  
+            "availSelector": {
+                "avail":[".os-btn"]
+            }
+        },
+  
+  
+        {
+            
+            "classSelector": ".cat-item",
+  
+            "nameSelector": [
+                { "selector": [".clsgetname"] },
+            ],
+            "imgSelector": [
+                { "selector": [".product-image-photo"], "attribute": "src" }
+            ],
+  
+            "priceSelector": [
+                { "selector": [".final_price"], "regex": [/\d+(\.\d+)?/g] },
+                { "selector": ["#final_price"] , "regex": [/\d+(\.\d+)?/g]}
+            ],
+  
+            "mrpSelector": [
+                { "selector": [".price"], "regex": [/\d+(\.\d+)?/g] },
+            ],
+  
+            "pidSelector": [
+                { "selector": [".category_name"], "attribute": "href" ,"regex": [/(?:\.com\/)(.+)/]}
+            ],
+  
+            "availSelector": {
+                "avail":[".os-btn"]
+            }
+        }
+    ]
+  
+  
+  }

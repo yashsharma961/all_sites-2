@@ -1,0 +1,77 @@
+let config_f = {
+    "prod": [
+  
+      {
+          //similar //also bought
+          "classSelector": [".cp-product"],
+  
+            "nameSelector": [
+              { "selector": [".product-img.mini-cart-image","img"], attribute:"title"},
+              {selector:['.product-img','img'], attribute:'alt'},
+              {selector:['.product-title']}
+            ],
+            "imgSelector": [
+                { "selector": [".product-img.mini-cart-image", "img"], "attribute": "src" },
+                {"selector":['.product-img.plp-card-thumbnail','img'], attribute:'src'},
+                {'selector':['.product-img','img'], attribute:'src'}
+            ],
+  
+            "priceSelector": [
+              {selector:['.cp-price','.amount'],"regex": [/\d+(\.\d+)?/g] },
+                { "selector": ["#pdp-product-price"], "regex": [/\d+(\.\d+)?/g] },
+                {selector:['.mobile-cart-price-grid','span'], "regex": [/\d+(\.\d+)?/g]}
+            ],
+            mrpSelector:[
+              {selector:['.old-price','.amount'],"regex": [/\d+(\.\d+)?/g] }
+            ],
+  
+          
+  
+            "pidSelector": [
+                { "selector": ["a"], "attribute": "href", "regex": [/\/p\/(\d+)/] }
+            ],
+  
+            "availSelector": {
+                "avail":['#warning']
+            },
+  
+        },
+  
+        {
+          //product page
+            "classSelector": ["html"],
+  
+            "nameSelector": [
+                { "selector": [".pd-title.pd-title-normal"] },
+            ],
+            "imgSelector": [
+                { "selector": [".swiper-slide.swiper-slide-active", "img"], "attribute": "src" }
+            ],
+  
+            "priceSelector": [
+                { "selector": ["#pdp-product-price"], "regex": [/\d+(\.\d+)?/g] }
+            ],
+  
+            "mrpSelector": [
+                { "selector": ["#old-price"], "regex": [/\d+(\.\d+)?/g] },
+            ],
+  
+            "pidSelector": [
+                { "selector": ["link[rel='canonical']"], "attribute": "href", "regex": [/\/p\/(\d+)$/] }
+            ],
+  
+            "availSelector": {
+                "avail": [".title.delivery-not-available"]
+            },
+  
+            "breadSelector": [
+                { "selector": [".cp-breadcrumb"], "bread": "li", "selectingbread": [], trim: 1}
+            ]
+        
+        }
+        
+    ]
+  
+  }
+  
+  

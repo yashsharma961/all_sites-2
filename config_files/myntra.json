@@ -1,0 +1,279 @@
+let config_f = {
+    prod: [
+      // related 
+        {
+          classSelector: ".product-list-gist",
+          nameSelector: [
+            {
+              selector: [".product-item-title"],
+              attribute: "innerText",
+              brandselector: [".product-item-brand"],
+              brandattribute: "innerText",
+            },
+          ],
+          imgSelector: [{ selector: ["img"], attribute: "src" }],
+          priceSelector: [
+            {
+              selector: [".product-item-selling-price"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+          mrpSelector: [
+            {
+              selector: [".product-item-mrp"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+  
+          pidSelector: [
+            {
+              selector: ["a"],
+              attribute: "href",
+              regex: [/(?:\/[^/]+){4}\/([^/]+)/, /(?:\/[^/]+){1}\/([^/]+)/],
+            },
+          ],
+  
+          availSelector: { avail: 2 },
+        },
+  
+      // cart page
+        {
+          classSelector: ".itemContainer-base-itemMargin",
+          nameSelector: [
+            {
+              selector: ["a[class='itemContainer-base-itemLink']"],
+              attribute: "innerText",
+              brandselector: [".itemContainer-base-brand"],
+              brandattribute: "innerText",
+            },
+          ],
+          imgSelector: [{ selector: ["img"], attribute: "src" }],
+          priceSelector: [
+            {
+              selector: [".itemComponents-base-price"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+          mrpSelector: [
+            {
+              selector: [".itemComponents-base-strike"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+          skuSelector:[
+            { selector:['.itemComponents-base-size'] , regex:[/Size:(.*)/]}
+          ],
+  
+          pidSelector: [
+            {
+              selector: ["a"],
+              attribute: "href",
+  
+              regex: [/(?:\/[^/]+){4}\/([^/]+)/, /(?:\/[^/]+){1}\/([^/]+)/],
+            },
+          ],
+  
+          availSelector: { avail: [".itemComponents-base-oosMessage"] },
+        },
+  
+  
+        // you may also like
+        {
+          classSelector: ".cartFillerProduct-base-cartFillerProduct",
+          nameSelector: [
+            {
+              selector: [".cartFillerProduct-base-productDescription"],
+              attribute: "innerText",
+              brandselector: [".cartFillerProduct-base-brandName"],
+              brandattribute: "innerText",
+            },
+          ],
+          imgSelector: [{ selector: ["img"], attribute: "src" }],
+          priceSelector: [
+            {
+              selector: [".cartFillerProduct-base-priceInfo"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+          extraPriceSelector: [
+            {
+              selector: [".cartFillerProduct-base-boldtext"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+          mrpSelector: [
+            {
+              selector: [".cartFillerProduct-base-originalPrice"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+  
+          pidSelector: [
+            {
+              selector: ["a"],
+              attribute: "href",
+  
+              regex: [/(?:\/[^/]+){4}\/([^/]+)/, /(?:\/[^/]+){1}\/([^/]+)/],
+            },
+          ],
+  
+          availSelector: { avail: 2 },
+        },
+  
+  
+      // product page
+      {
+        scriptSelector: 'window.__myx = {"pdpData"',
+        globalpath: {
+          pidselector: "pdpData.id",
+          nameselector: "pdpData.name",
+          mrpselector: "pdpData.mrp",
+          imgselector: "pdpData.media.albums[0].images[0].src",
+        },
+        targetpath: "pdpData.sizes",
+        nameSelector: { selector: "globalpath" },
+        pidSelector: { selector: "globalpath", vselector: "label" },
+        imgSelector: { selector: "globalpath" },
+        availSelector: { avail: "available" },
+        breadSelector: [
+                  {
+                    selector: [],
+                    bread: ".breadcrumbs-link",
+                    selectingbread: [],
+                    attribute: "innerText",
+                  },
+                ],
+        priceSelector: {
+          selector: "sizeSellerData[0].discountedPrice",
+        },
+        mrpSelector: {
+          selector: "globalpath",
+        },
+      },
+  
+      {   //category
+        classSelector: ".product-base",
+        nameSelector: [
+          {
+            selector: [".product-product"],
+            attribute: "innerText",
+            brandselector: [".product-brand"],
+            brandattribute: "innerText",
+          },
+        ],
+        imgSelector: [{ selector: ["img"], attribute: "src" }],
+        priceSelector: [
+          {
+            selector: [".product-price"],
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+        ],
+        extraPriceSelector: [
+          {
+            selector: [".product-discountedPrice"],
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+        ],
+        mrpSelector: [
+          {
+            selector: [".product-strike"],
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+        ],
+  
+        pidSelector: [
+          {
+            selector: ["a"],
+            attribute: "href",
+  
+            regex: [/(?:\/[^/]+){4}\/([^/]+)/, /(?:\/[^/]+){1}\/([^/]+)/],
+          },
+        ],
+  
+        availSelector: { avail: 1 },
+        skuSelector: [{ selector: [".product-sizeInventoryPresent"] }],
+      },
+  
+  
+  
+      // wishlist 
+        {
+          classSelector: ".itemcard-itemCard",
+          nameSelector: [
+            { selector: [".itemdetails-itemDetailsLabel"], attribute: "innerText" },
+          ],
+          imgSelector: [{ selector: ["img"], attribute: "src" }],
+          priceSelector: [
+            {
+              selector: [".itemdetails-boldFont"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+          mrpSelector: [
+            {
+              selector: [".itemdetails-strike"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+  
+          pidSelector: [
+            {
+              selector: ["a"],
+              attribute: "href",
+              regex: [/(?:\/[^/]+){4}\/([^/]+)/, /(?:\/[^/]+){1}\/([^/]+)/],
+            },
+          ],
+  
+          availSelector: { avail: [".itemcard-outOfStockText"] },
+        },
+  
+  
+      // studio 
+        {
+          classSelector: ".r-139bd39",
+          nameSelector: [
+            {
+              selector: [".r-1s9vnxd"],
+              attribute: "innerText",
+            },
+          ],
+          imgSelector: [{ selector: ["img"], attribute: "src" }],
+          priceSelector: [
+            {
+              selector: [".r-1hvjb8t"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+          mrpSelector: [
+            {
+              selector: [".r-142tt33"],
+              attribute: "innerText",
+              regex: [/\d+(\.\d+)?/g],
+            },
+          ],
+  
+          pidSelector: [
+            {
+              selector: ["img"],
+              attribute: "src",
+              regex: [/(?:\/[^/]+){4}\/([^/]+)/, /(?:\/[^/]+){1}\/([^/]+)/],
+            },
+          ],
+          availSelector: { avail: 2 },
+        },
+    ],
+  };
+  

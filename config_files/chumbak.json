@@ -1,0 +1,87 @@
+let config_f = {
+    "prod": [
+    {   // product page
+        "classSelector":"html",       
+        "nameSelector":[
+        {"selector":[".ProductMeta__Title"], attribute: "innerText"}
+        ],
+        "priceSelector":[
+        {"selector":["span.ProductMeta__Price.Price--highlight"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]},
+        {"selector":["span.ProductMeta__Price"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+        ],
+        "mrpSelector":[
+        {"selector":["span.ProductMeta__Price.Price--compareAt"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+        ],
+        "pidSelector":[
+        {"selector":['link[rel="canonical"]'], attribute: "href", regex:[/products\/([a-zA-Z0-9-]+)/]}
+        ],
+        "imgSelector": [
+        {"selector" : ['meta[property="og:image:secure_url"]'], "attribute": "content"},
+        {"selector" : ['meta[property="og:image"]'], "attribute": "content"}
+        ],
+        "breadSelector":[
+        {"selector":[".breadcrumbs","ol"],"bread": "li", "selectingbread":["a"], "attribute":"innerText"}
+        ],
+        "availSelector":
+        {"avail":[".ProductForm__AddToCart.Button--secondary"]} 
+    },
+    {   // you may also like + category
+        "classSelector":".ProductItem",       
+        "nameSelector":[
+        {"selector":[".ProductItem__Info",".ProductItem__Title","a"], attribute: "innerText"}
+        ],
+        "priceSelector":[
+        {"selector":["span.ProductItem__Price.Price--highlight"], attribute: "innerText" ,"regex": [/\d+(\.\d+)?/g]},
+        {"selector":["span.ProductItem__Price"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+        ],
+        "mrpSelector":[
+        {"selector":["span.ProductItem__Price.Price--compareAt"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+        ],
+        "pidSelector":[
+        {"selector":[".ProductItem__Info",".ProductItem__Title","a"], attribute: "href", regex:[/products\/([a-zA-Z0-9-]+)/]}
+        ],
+        "imgSelector": [
+        {"selector" : [".ProductItem__Image:not(.ProductItem__Image--alternate)"], "attribute": "srcset", regex:[/chumbak[^\s]*/i], "match":0}
+        ]
+    },
+    {   // search
+        "classSelector":".st-card",       
+        "nameSelector":[
+        {"selector":[".st-loop-product__link"], attribute: "innerText"}
+        ],
+        "priceSelector":[
+        {"selector":[".final-price"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+        ],
+        "mrpSelector":[
+        {"selector":[".mrp-price"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+        ],
+        "pidSelector":[
+        {"selector":[".st-loop-product__link"], attribute: "href", regex:[/products\/([a-zA-Z0-9-]+)/]}
+        ],
+        "imgSelector": [
+        {"selector" : [".grid-view-item__image"], "attribute": "src"}
+        ],
+        "availSelector":
+        {"avail":[".ProductItem__Label--soldOut"]} 
+    },
+    {   // cart
+        "classSelector":".item",       
+        "nameSelector":[
+        {"selector":[".title"], attribute: "innerText"},
+        {"selector" : [".image","img"], "attribute": "alt"}
+        ],
+        "priceSelector":[
+        {"selector":[".price"],attribute: "innerText", "regex": [/\d+(\.\d+)?/g]}
+        ],
+        "mrpSelector":[
+        "no mrp"
+        ],
+        "pidSelector":[
+        {"selector":[".title","a"], attribute: "href", regex:[/products\/([a-zA-Z0-9-]+)/]}
+        ],
+        "imgSelector": [
+        {"selector" : [".image","img"], "attribute": "src"}
+        ]
+    }
+]
+}

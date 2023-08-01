@@ -1,0 +1,115 @@
+
+let config_f={
+    prod:[
+        {
+
+            //product page
+            classSelector:'html',
+            priceSelector:[
+              {selector:['.price-value-value.variantInfo_price-value-value__2ZQIC'], regex: [/\d+(\.\d+)?/g]}
+                
+            ],
+            nameSelector:[
+              {selector:['.variantInfo_var-info__nm__ZlOER']}
+            ],
+            mrpSelector:[
+              {selector:['.variantInfo_mrp-value__17u8u'], regex: [/\d+(\.\d+)?/g]}
+            ],
+            pidSelector:[
+              {selector:['link[rel="canonical"]'],attribute:'href', navKey:"",regex:[/navKey=(\w+-\d+)/]}
+            ],
+            imgSelector:[
+              {selector:['.doubleSlickCarousel2_main-img__1qxh-','img'], attribute:'src'}
+            ],
+            "breadSelector":[
+              {"selector":[],"bread": '.breadcrumbs_item__39N3Z', "selectingbread":[], "attribute":"textContent", trim:1}
+             ],
+             availSelector: {avail:['.currently-unavailable-title.notifyMe_currently-unavailable-title__1GIAq']}
+
+       },
+       {
+        //similer
+        classSelector:'.swiper-slide',
+        nameSelector:[
+            {selector:['.variant-name.VariantDefaultLoyal_variant-name__2ox92']}
+        ],
+        priceSelector:[
+            {selector:['.variant-price.undefined'] ,regex: [/\d+(\.\d+)?/g]}
+        ],
+        mrpSelector:[
+            {selector:['.variant-old-price.undefined'],regex: [/\d+(\.\d+)?/g]}
+        ],
+        pidSelector:[
+            {selector:['.variant-link.trs.undefined.undefined'],attribute:'href', navKey:"",regex:[/navKey=(\w+-\d+)/]}
+        ],
+        imgSelector:[
+            {selector:['.variant-img.center-center.VariantDefaultLoyal_variant-img__2mSxk.undefined','img'], attribute:'src'}
+        ],
+        availSelector:{avail:['.btn.btn-blue-mini.inline-button.js-notify-submit.tr-notifySubmit.isLoggedInCaseButton.notifyMe_tr-notifySubmit__20rO0.notifyMe_js-notify-submit__2atdw.notifyMe_isLoggedInCaseButton__2NS4y']}
+     },
+         {   //Category
+           classSelector:'.hk-variants-box-body-vis.variantBoxDesktopLayoutLoyal_hk-variants-box-body-vis__xsNxb',
+           nameSelector:[
+               {selector:[".variant-name.variantBoxDesktopLayoutLoyal_variant-name__15TPT"]},
+
+           ],
+           
+           imgSelector:[
+               {selector:[".variant-img.variantBoxDesktopLayoutLoyal_variant-img__2eT73","img"], attribute:"src"},
+             
+           ],
+           priceSelector:[
+               {selector:[".variant-price.variantBoxDesktopLayoutLoyal_variant-price__36JaH"],  regex: [/\d+(\.\d+)?/g]}
+           ],
+           mrpSelector:[
+               {selector:[".variant-old-price.variantBoxDesktopLayoutLoyal_variant-old-price__3IR_w"], regex: [/\d+(\.\d+)?/g]}
+           ],
+           pidSelector:[
+            {selector:[".variant-inner-content.variantBoxDesktopLayoutLoyal_variant-inner-content__2MrL5","a"], attribute:"href" ,navKey:"", regex:[/navKey=(\w+-\d+)/]}
+           ],
+           availSelector: {avail:['.sold-out-info.variantBoxDesktopLayoutLoyal_sold-out-info__2QaL6']}
+           
+         },
+       
+        {
+            //combo
+            classSelector:'.variantComboBox_item__2tmaA',
+            priceSelector:[
+              {selector:['.variantComboBox_offer-price__3Zk5l'], regex: [/\d+(\.\d+)?/g]}
+                
+            ],
+            nameSelector:[
+              {selector:['.variantComboBox_name__1Jg1q']}
+            ],
+            mrpSelector:[
+              {selector:['.variantComboBox_mrp__3x3ey'], regex: [/\d+(\.\d+)?/g]}
+            ],
+            pidSelector:[
+              {selector:['.__CONSTCLS_item_weight.variantAttributes2_item__2XED2.waight-area.undefined.selected.variantAttributes2_selected__3vGF0'],attribute:'href', navKey:"",regex:[/navKey=(\w+-\d+)/]}
+            ],
+            imgSelector:[
+              {selector:['.variantComboBox_img-box__3CFta','img'], attribute:'src'}
+            ],
+         },
+         {
+            //wishlist
+            classSelector:'.wishlist-item.wishlist_wishlist-item__yIxd_',
+            nameSelector:[
+                {selector:['.wishlist-item-name.full-width.wishlist_wishlist-item-name__3HsT4.wishlist_full-width__1pK8G','a']}
+            ],
+            priceSelector:[
+                {selector:['.item-price.wishlist_item-price__2Dimq'] ,regex: [/\d+(\.\d+)?/g]}
+            ],
+            mrpSelector:[
+                {selector:['.item-mrp.wishlist_item-mrp__2EW8G'],regex: [/\d+(\.\d+)?/g]}
+            ],
+            pidSelector:[
+                {selector:['.wishlist-item-name.full-width.wishlist_wishlist-item-name__3HsT4.wishlist_full-width__1pK8G','a'],attribute:'href', navKey:"",regex:[/navKey=(\w+-\d+)/]}
+            ],
+            imgSelector:[
+                {selector:['.wishlist-item-image.wishlist_wishlist-item-image__HZADc','img'], attribute:'src'}
+            ],
+            availSelector:{avail:['.btn.btn-blue-mini.inline-button.js-notify-submit.tr-notifySubmit.isLoggedInCaseButton.notifyMe_tr-notifySubmit__20rO0.notifyMe_js-notify-submit__2atdw.notifyMe_isLoggedInCaseButton__2NS4y']}
+         }
+    ]
+}

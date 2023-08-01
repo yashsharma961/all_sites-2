@@ -1,0 +1,507 @@
+let config_f = {
+  "prod": [
+    
+    { "classSelector":"html",
+    "nameSelector":[
+        {"selector":[".centerColAlign","h1"]},
+        {"selector":["#centerCol","h1"]},
+        {"selector":['#aud_center_col','#productTitle']}
+    ],
+    "priceSelector":[
+        {"selector":[".centerColAlign",".a-price-whole"], "regex": [/\d+(\.\d+)?/g]},
+        {"selector":["#centerCol",".a-price-whole"], "regex": [/\d+(\.\d+)?/g]},
+        {"selector":["#centerCol",".a-size-base.a-color-price.a-color-price"], "regex": [/\d+(\.\d+)?/g]},
+
+    ],
+    "mrpSelector":[
+        {"selector":['#centerCol' ,'.a-section.a-spacing-small.aok-align-center','.a-price.a-text-price','span'],"regex": [/\d+(\.\d+)?/g]},
+        {"selector":[".a-box.a-last",".a-color-secondary.a-text-strike"],"regex": [/\d+(\.\d+)?/g]}, //priorty for books
+        {"selector":[".centerColAlign",'.a-price.a-text-price','span'], "regex": [/\d+(\.\d+)?/g]},
+        {"selector":["#centerCol",".a-price.a-text-price","span"], "regex": [/\d+(\.\d+)?/g]},
+        {'selector':['.a-color-base.a-align-bottom.a-text-strike'],"regex": [/\d+(\.\d+)?/g]}
+
+    ],
+    "pidSelector":[
+        {"selector":["#ASIN"] ,"attribute":"value"},
+        {"selector":["#twister-plus-asin"], "attribute": "value"},
+        {"selector":['#all-offers-display-params'],"attribute":"data-asin"},
+        {"selector":['.landingAsinValue'], "attribute":"value"}
+
+    ],
+    "bestpriceSelector":[
+        {"selector":".a-box.mbc-offer-row.pa_mbc_on_amazon_offer" ,"othersellerprice":".a-size-medium.a-color-price","regex": [/\d+(\.\d+)?/g]}
+
+    ],
+    "imgSelector": [
+        {"selector": ["#img-canvas",".a-dynamic-image.image-stretch-vertical.frontImage"] , "attribute": "src"},
+        {"selector":['#imgTagWrapperId',"img"], "attribute": "src"},
+        {"selector":['#ebooks-img-canvas','.a-dynamic-image.frontImage'], "attribute": "src"},
+        {"selector":['.image-wrapper','img'], "attribute":"src"}
+    ],
+    "breadSelector":[
+        {"selector":["#wayfinding-breadcrumbs_feature_div","ul"],"bread": "li:not(.a-breadcrumb-divider)", "selectingbread":[], "attribute":"innerText"}
+       ],
+    "availSelector":
+              {"avail":["#outOfStock"]} 
+
+    },
+  //       // TBP,KF
+  {
+    classSelector: ".a-carousel-card",
+
+    nameSelector: [
+      {
+        "selector": ["h2"]
+      },
+      {
+        selector: [".a-truncate-full.a-offscreen"],
+        attribute: "innerHTML",
+      },
+      { selector: [".p13n-sc-truncate-desktop-type2"], attribute: "title" },
+      { selector: [".p13n-product-image"], attribute: "alt" },
+      {
+        selector: [".p13n-sc-truncate-desktop-type2"],
+        attribute: "innerText",
+      },
+      {
+        selector: [".a-truncate-full"],
+        attribute: "innerText",
+      },
+      {
+        selector: [".a-box-group.a-spacing-top-micro"], // name sometimes in ........
+        attribute: "innerText",
+      },
+      { selector: ["img"], attribute: "alt" },
+    ],
+
+    imgSelector: [
+      {
+        selector: ["img"],
+        attribute: "src",
+      },
+      { selector: [".p13n-product-image"], attribute: "src" },
+    ],
+
+    priceSelector: [
+      {
+        selector: [
+          ".a-price.acs-product-block__price--buying span[class='a-offscreen']",
+        ], // not for audiobooks
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      {
+        selector: ["._cDEzb_p13n-sc-price_3mJ9Z"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      {
+        selector: [".a-price", ".a-offscreen"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      {
+        selector: [".p13n-sc-price"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      {
+        selector: [".a-price.a-text-price span[class='a-offscreen']"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      { selector: [".a-size-medium.a-color-price"], regex: [/\d+(\.\d+)?/g] }
+    ],
+
+    mrpSelector: [
+      {
+        selector: [
+          ".acs-product-block__price--strikethrough span[class='a-offscreen']",
+        ],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      {
+        selector: [".a-text-strike"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      {selector:[".a-price.a-text-price",".a-offscreen"],attribute:"innerText", regex:[/\d+(\.\d+)?/g]},
+      "no mrp"
+    ],
+
+    pidSelector: [
+      {
+        selector: [".a-link-normal"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/],
+      },
+      { selector: [".p13n-sc-uncoverable-faceout"], attribute: "id" },
+      {
+        selector: [".p13n-sc-uncoverable-faceout", "a"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/],
+      },
+    ],
+    availSelector:{
+      avail:["span[aria-label='Currently unavailable.']"]
+    }
+  },
+
+
+
+  {
+    // TBP,KF 2
+    classSelector: ".octopus-pc-item.octopus-pc-item-v3",
+
+    nameSelector: [
+      {
+        selector: [".octopus-pc-asin-title"],
+        attribute: "innerText",
+      },
+    ],
+
+    imgSelector: [
+      {
+        selector: ["img"],
+        attribute: "src",
+      },
+    ],
+
+    priceSelector: [
+      {
+        selector: [".a-offscreen"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+    ],
+
+    mrpSelector: [
+      {
+        selector: [".octopus-pc-asin-strike-price"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      "no mrp",
+    ],
+
+    pidSelector: [
+      {
+        selector: ["a"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/],
+      },
+    ],
+  },
+
+  // vaibhav
+  {
+    classSelector:
+      ".ProductGridItem_itemOuterKUtvv.ProductGridItemfixed_DQzmO",
+
+    nameSelector: [
+      { selector: [".ProductGridItem_image_ih70n img"], attribute: "alt" },
+    ],
+
+    imgSelector: [
+      { selector: [".ProductGridItem_image_ih70n img"], attribute: "src" },
+    ],
+
+    priceSelector: [
+      {
+        selector: [
+          ".Price_priceLKpWT.PricexlargeEZT27.ProductGridItembuyPricehNEg6.PricefixedSize_jmsXS",
+        ],
+        attribute: "ariaLabel",
+        regex: [/\d+(\.\d+)?/g],
+      },
+    ],
+
+    mrpSelector: [
+      {
+        selector: [
+          ".Price_priceLKpWT.PricesmallY4NDm.StrikeThroughPricestrikePricestBvh.PricestrikethroughlQg8R.PricefixedSize_jmsXS",
+        ],
+        attribute: "ariaLabel",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      "no mrp",
+    ],
+
+    pidSelector: [
+      {
+        selector: ["a"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/],
+      },
+    ],
+  },
+  // vaibhav
+  {
+    classSelector: ".ProductShowcase_showcase_vGSAb",
+
+    nameSelector: [
+      { selector: [".ProductShowcase_title_SBCBw"], attribute: "title" },
+      { selector: [".ProductShowcase_title_SBCBw"], attribute: "innerText" },
+    ],
+
+    imgSelector: [
+      { selector: ['.slick-slide[data-index="0"]', "img"], attribute: "src" },
+    ],
+
+    priceSelector: [
+      {
+        selector: [
+          ".Price_priceLKpWT.PricexlargeEZT27.ProductShowcasebuyPrice_bikMe",
+        ],
+        attribute: "ariaLabel",
+        regex: [/\d+(\.\d+)?/g],
+      },
+    ],
+
+    mrpSelector: [
+      {
+        selector: [
+          ".Price_priceLKpWT.PriceminifhS94.StrikeThroughPricestrikePricestBvh.Pricestrikethrough_lQg8R",
+        ],
+        attribute: "ariaLabel",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      "no mrp",
+    ],
+
+    pidSelector: [
+      {
+        selector: [".ProductShowcase_title_SBCBw"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/],
+      },
+    ],
+  },
+
+  {
+    // best seller depaertment wise
+    classSelector: ".gridItemRoot",
+    nameSelector: [
+      {
+        selector: ["._cDEzb_p13n-sc-css-line-clamp-3_g3dy1"],
+        attribute: "innerText",
+      },
+      {
+        selector: [
+          ".a-dynamic-image.p13n-sc-dynamic-image.p13n-product-image",
+        ],
+        attribute: "alt",
+      },
+    ],
+    imgSelector: [
+      {
+        selector: [
+          ".a-dynamic-image.p13n-sc-dynamic-image.p13n-product-image",
+        ],
+        attribute: "src",
+      },
+    ],
+    priceSelector: [
+      {
+        selector: ["._cDEzb_p13n-sc-price_3mJ9Z"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+    ],
+    mrpSelector: "no mrp",
+
+    pidSelector: [
+      { selector: [".p13n-sc-uncoverable-faceout"], attribute: "id" },
+    ],
+  },
+  // yash page
+  {
+    classSelector: ".p13n-sc-uncoverable-faceout",
+    nameSelector: [{ selector: ["span"] }],
+
+    priceSelector: [
+      { selector: [".a-price", "span"], regex: [/\d+(\.\d+)?/g] },
+    ],
+    mrpSelector: [
+      {
+        selector: [".a-price.a-text-price", "span"],
+        regex: [/\d+(\.\d+)?/g],
+      },
+      "no mrp",
+    ],
+
+    pidSelector: [
+      {
+        selector: ["a"],
+        attribute: "href",
+        regex: [/\/dp\/([A-Z0-9]+)/],
+      },
+    ],
+  },
+
+  {
+    // wishlist
+    classSelector: "li.g-item-sortable",
+
+    nameSelector: [
+      {
+        selector: [".g-itemImage a"],
+        attribute: "title",
+      },
+    ],
+
+    imgSelector: [
+      {
+        selector: [".g-itemImage img"],
+        attribute: "src",
+      },
+    ],
+
+    priceSelector: [
+      {
+        selector: [".a-price span[class='a-offscreen']"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+    ],
+
+    mrpSelector: [
+      {
+        selector: [".wl-deal-price-and-striked-price"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      "no mrp",
+    ],
+
+    pidSelector: [
+      {
+        selector: [".g-itemImage a"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/],
+      },
+    ],
+  },
+  {
+    // cart
+    classSelector: ".a-row.sc-list-item",
+    nameSelector: [
+      { selector: [".a-truncate-full"], attribute: "innerText" },
+      { selector: [".aok-offscreen"], attribute: "innerText" },
+    ],
+    imgSelector: [{ selector: [".sc-product-image"], attribute: "src" }],
+    priceSelector: [
+      {
+        selector: [".sc-product-price"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+    ],
+    mrpSelector: [
+      {
+        selector: [".sc-badge-basis-price", ".a-offscreen"],
+        attribute: "innerText",
+        regex: [/\d+(\.\d+)?/g],
+      },
+      "no mrp",
+    ],
+
+    pidSelector: [
+      {
+        selector: [".sc-product-link"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /product\/([A-Za-z0-9]+)/],
+      },
+    ],
+  },
+  {
+    classSelector: [
+      ".a-cardui.p13n-desktop-sims-fbt_fbt-desktop_new-detail-faceout-box__WyNy",
+    ],
+
+    nameSelector: [{ selector: ["span.a-size-base"] }],
+    imgSelector: [{ selector: ["img"], attribute: "src" }],
+
+    priceSelector: [
+      { selector: ["span.a-offscreen"], regex: [/\d+(\.\d+)?/g] },
+    ],
+
+    mrpSelector: ["no mrp"],
+
+    pidSelector: [
+      {
+        selector: [".a-link-normal"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/],
+      },
+    ],
+  },
+
+  {
+    classSelector: ["#value-pick-ac"],
+
+    nameSelector: [{ selector: ["#value-pick-title-row"] }],
+    imgSelector: [{ selector: ["img"], attribute: "src" }],
+
+    priceSelector: [
+      { selector: [".a-size-base.a-color-price"], regex: [/\d+(\.\d+)?/g] },
+    ],
+
+    mrpSelector: ["no mrp"],
+
+    pidSelector: 
+      {
+        selector: [".a-size-base.a-link-normal"],
+        attribute: "href",
+        regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/]
+      }
+  }
+
+  ,
+  {
+     // s-card
+      classSelector: ".s-card-container",
+      nameSelector: [
+        {
+          "selector": ["h2"]
+        },
+        {selector:['.a-size-medium.a-color-base.a-text-normal']},
+         {selector:['.a-size-mini.a-spacing-none.a-color-base.s-line-clamp-2']},
+        { selector: ["span.a-text-normal"], attribute: "innerText" },
+        { selector: ["img.s-image"], attribute: "alt" },
+      ],
+      imgSelector: [{ selector: ["img.s-image"], attribute: "src" }]
+      ,
+      priceSelector: [
+        {
+          selector: [".a-price", ".a-offscreen"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+
+      mrpSelector: [
+        {
+          selector: [".a-price.a-text-price", ".a-offscreen"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+        "no mrp",
+      ],
+
+      pidSelector: [
+        {
+          selector: ["h2","a"],
+          attribute: "href",
+          regex: [/dp\/([a-zA-Z0-9]+)/, /dp%2F([a-zA-Z0-9]+)/],
+        },
+      ],
+      availSelector:{
+        avail:["span[aria-label='Currently unavailable.']"]
+      }
+    }
+  
+      
+  ]
+}

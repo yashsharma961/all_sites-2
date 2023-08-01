@@ -1,0 +1,253 @@
+let config_f = {
+    prod: [
+      {
+        // Product Page
+        classSelector: "html",
+        VclassSelector: [".wishblock", "product-actions", ".dwishblock"],
+  
+        breadSelector: [
+          {
+            selector: ["#breadcrumbs"],
+            bread: "li",
+            selectingbread: ["a"],
+            attribute: "innerText",
+          },
+        ],
+  
+        pidSelector: [
+          {
+            selector: ["meta[property='og:url']"],
+            attribute: "content",
+            regex: [/products\/([a-zA-Z0-9-]+)/],
+          },
+        ],
+  
+        variant: {
+          nameSelector: [
+            {
+              selector: [".product-image-thumbnail img"],
+              attribute: "alt",
+            },
+          ],
+          skuSelector1: [
+            {
+              selector: [".icofont.wishicon"],
+              attribute: "data-sku",
+            },
+            {
+              selector: [".icofont.dwishicon"],
+              attribute: "data-sku",
+            },
+          ],
+  
+          idSelector: [
+            // not pid
+            {
+              selector: [".icofont.wishicon"],
+              attribute: "data-vid",
+              prepend: "tmb-",
+            },
+            {
+              selector: [".icofont.dwishicon"],
+              attribute: "data-vid",
+              prepend: "tmb-",
+            },
+          ],
+          imgSelector: [
+            //
+            {
+              selector: [".product-image-thumbnail img"],
+              attribute: "data-src",
+              replace: ["slide_thumb", "slide", "original", "mini"],
+              replace_with: "xyz",
+            },
+            {
+              selector: [".product-image-thumbnail img"],
+              attribute: "src",
+            },
+          ],
+  
+          priceSelector: [
+            {
+              selector: [".icofont.wishicon"],
+              attribute: "data-price",
+            },
+            {
+              selector: [".icofont.dwishicon"],
+              attribute: "data-price",
+            },
+          ],
+  
+          mrpSelector: [
+            {
+              selector: [".icofont.wishicon"], // icofont-heart_outline_thick
+              attribute: "data-mrp",
+            },
+            {
+              selector: [".icofont.dwishicon"], // icofont-heart_outline_thick
+              attribute: "data-mrp",
+            },
+          ],
+        },
+  
+        availSelector: { avail: 2 }, //
+      },
+  
+      {
+        // Category Products, Wishlist Products
+        classSelector: ".hovercard",
+        nameSelector: [
+          {
+            selector: [".productbox meta[itemprop='description']"],
+            attribute: "content",
+          },
+        ],
+        imgSelector: [
+          {
+            selector: [".product-img img"],
+            attribute: "src",
+            replace: ["slide_thumb", "slide", "original", "mini"],
+            replace_with: "xyz",
+          },
+        ],
+        priceSelector: [
+          {
+            selector: [".price-number span"],
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+        ],
+  
+        mrpSelector: [
+          {
+            selector: [".price-number strike"],
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+          "no mrp",
+        ],
+  
+        pidSelector: [
+          {
+            selector: [".product-img"],
+            attribute: "href",
+            //   sku: "data-sku",
+  
+            regex: [/products\/([a-zA-Z0-9-]+)/],
+          },
+        ],
+        skuSelector1: [
+          {
+            selector: [".productbox meta[itemprop='sku']"],
+            attribute: "content",
+          },
+        ],
+  
+        availSelector: { avail: 2 },
+      },
+  
+      {
+        // cart products
+        classSelector: ".row.cart-line-item",
+        nameSelector: [
+          {
+            selector: [".cart_wishlist span"],
+            path: "dataset.title",
+            //   brandselector: [".cartFillerProduct-base-brandName"],
+            //   brandattribute: "innerText",
+          },
+        ],
+        imgSelector: [
+          {
+            selector: [".cart_image img"],
+            attribute: "src",
+            replace: ["slide_thumb", "slide", "original", "mini"],
+            replace_with: "xyz",
+          },
+        ],
+        priceSelector: [
+          {
+            selector: [".final-price"],
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+        ],
+  
+        mrpSelector: [
+          {
+            selector: [".strike-price"],
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+        ],
+  
+        pidSelector: [
+          {
+            selector: [".product-title a"],
+            attribute: "href",
+  
+            regex: [/products\/([a-zA-Z0-9-]+)/],
+          },
+        ],
+        skuSelector1: [
+          {
+            selector: [],
+            attribute: "data-sku",
+          },
+        ],
+  
+        availSelector: { avail: 2 },
+      },
+  
+      {
+        // Similar Products and Recently Viewed (on product page)
+        classSelector: ".grid-item.product",
+        nameSelector: [
+          {
+            selector: [".product-details"],
+            attribute: "innerText",
+          },
+        ],
+        imgSelector: [
+          {
+            selector: ["img"],
+            attribute: "src",
+            replace: ["slide_thumb", "slide", "original", "mini"],
+            replace_with: "xyz",
+          },
+        ],
+        priceSelector: [
+          {
+            selector: [".price.selling"],
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+        ],
+        mrpSelector: [
+          {
+            selector: [".strike-price"], //
+            attribute: "innerText",
+            regex: [/\d+(\.\d+)?/g],
+          },
+        ],
+  
+        pidSelector: [
+          {
+            selector: ["a"],
+            attribute: "href",
+            regex: [/products\/([a-zA-Z0-9-]+)/],
+          },
+        ],
+        skuSelector1: [
+          {
+            selector: ["a"],
+            attribute: "href",
+            regex: [/sku=([^&]+)/],
+          },
+        ],
+  
+        availSelector: { avail: 2 },
+      },
+    ],
+  };
+  

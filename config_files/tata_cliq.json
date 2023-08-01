@@ -1,0 +1,232 @@
+let config_f = {
+  prod: [
+    {
+      //Product Page
+      classSelector: "html",
+      nameSelector: [
+        {
+          selector: [".ProductDetailsMainCard__productName"],
+          attribute: "innerText",
+        },
+      ],
+      imgSelector: [
+        {
+          selector: [".Image__actual"],
+          attribute: "src",
+        },
+        {
+          selector:['.ProductGalleryDesktopUpdated__imgBoxFirst','img'],
+          attribute: "src",
+        }
+      ],
+      priceSelector: [
+        {
+          selector: [".ProductDetailsMainCard__price"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+      mrpSelector: [
+        {
+          selector: [".ProductDetailsMainCard__cancelPrice"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+
+      pidSelector: [
+        {
+          selector: [".ProductDetailsMainCard__linkName"],
+          attribute: "href",
+
+          regex: [/p-mp(\w+)/],
+        },
+      ],
+
+      availSelector: {
+        avail: [".PdpFlags__base"],
+        shouldContain: "Out of Stock",
+      },
+    },
+    {
+      //Wishlist Page
+      classSelector: ".Grid__element",
+      nameSelector: [
+        {
+          selector: [".wishlistGrid__imageAndDescriptionWrapper a"],
+          attribute: "title",
+        },
+      ],
+      imgSelector: [{ selector: [".Image__actual"], attribute: "src" }],
+      priceSelector: [
+        {
+          selector: [".ProductDescription__discountVerticalWidget"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+        {
+          selector: [".ProductDescription__priceHolder"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+      mrpSelector: [
+        {
+          selector: [".ProductDescription__priceCancelled"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+        {
+          selector: [".ProductDescription__priceHolder"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+
+      pidSelector: [
+        {
+          selector: [".wishlistGrid__imageAndDescriptionWrapper a"],
+          attribute: "href",
+
+          regex: [/p-mp(\w+)/],
+        },
+      ],
+
+      availSelector: { avail: 2 },
+    },
+
+    {
+      //Category Page
+      classSelector: ".Grid__element",
+      nameSelector: [
+        {
+          selector: [".ProductModule__imageAndDescriptionWrapper a"],
+          attribute: "title",
+        },
+      ],
+      imgSelector: [{ selector: ["img"], attribute: "src" }],
+      priceSelector: [
+        {
+          selector: [".ProductDescription__discount"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+        {
+          selector: [".ProductDescription__priceHolder"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+      mrpSelector: [
+        {
+          selector: [".ProductDescription__priceCancelled"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+        {
+          selector: [".ProductDescription__priceHolder"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+
+      pidSelector: [
+        {
+          selector: [".ProductModule__imageAndDescriptionWrapper a"],
+          attribute: "href",
+
+          regex: [/p-mp(\w+)/],
+        },
+      ],
+
+      availSelector: {
+        avail: [".ProductFlags__base"],
+        shouldContain: "Out of Stock",
+      },
+    },
+
+    // {
+    //   //Cart Page
+    //   classSelector: ".CartPage__cartItem",
+    //   nameSelector: [
+    //     {
+    //       selector: [".CartItemForDesktop__informationText"],
+    //       attribute: "innerText",
+    //     },
+    //   ],
+    //   imgSelector: [{ selector: [".Image__actual"], attribute: "src" }],
+    //   priceSelector: [
+    //     {
+    //       selector: [".CartItemForDesktop__informationTextWithBolder"],
+    //       attribute: "innerText",
+    //       regex: [/\d+(\.\d+)?/g],
+    //     },
+    //   ],
+    //   mrpSelector: [
+    //     {
+    //       selector: [".CartItemForDesktop__priceCancelled"],
+    //       attribute: "innerText",
+    //       regex: [/\d+(\.\d+)?/g],
+    //     },
+    //   ],
+
+    //   pidSelector: [
+    //     {
+    //       selector: [".Image__actual"],
+    //       attribute: "src",
+
+    //       regex: [/MP(\d+)/],
+    //     },
+    //   ],
+
+    //   availSelector: { avail: 2 },
+    // },
+
+    {
+      //Related Page
+      classSelector: ".DumbCarousel__element",
+      nameSelector: [
+        {
+          selector: [".ProductModule__imageAndDescriptionWrapper a"],
+          attribute: "ariaLabel",
+        },
+      ],
+      imgSelector: [{ selector: [".Image__actual"], attribute: "src" }],
+      priceSelector: [
+        {
+          selector: [".ProductDescription__discount"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+        {
+          selector: [".ProductDescription__priceHolder"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+      mrpSelector: [
+        {
+          selector: [".ProductDescription__priceCancelled"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+        {
+          selector: [".ProductDescription__priceHolder"],
+          attribute: "innerText",
+          regex: [/\d+(\.\d+)?/g],
+        },
+      ],
+
+      pidSelector: [
+        {
+          selector: [".ProductModule__imageAndDescriptionWrapper a"],
+          attribute: "href",
+
+          regex: [/p-mp(\w+)/],
+        },
+      ],
+
+      availSelector: { avail: 2 },
+    },
+  ],
+};
